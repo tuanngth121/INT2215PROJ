@@ -1,0 +1,98 @@
+# depslib dependency file v1.0
+1741703541 source:c:\users\tuanngth\desktop\chase\barrier.cpp
+	"Barrier.h"
+
+1741703541 c:\users\tuanngth\desktop\chase\barrier.h
+	"GameHeader.h"
+	"GameObject.h"
+
+1741703541 c:\users\tuanngth\desktop\chase\gameheader.h
+	<iostream>
+	<vector>
+	<cmath>
+	<ctime>
+	<chrono>
+
+1741703181 c:\users\tuanngth\desktop\chase\gameobject.h
+	"GameHeader.h"
+
+1741703181 source:c:\users\tuanngth\desktop\chase\gameobject.cpp
+	"GameObject.h"
+
+1741703181 source:c:\users\tuanngth\desktop\chase\rocket.cpp
+	"Rocket.h"
+
+1741703181 c:\users\tuanngth\desktop\chase\rocket.h
+	"GameHeader.h"
+	"GameObject.h"
+	"Spaceship.h"
+	"Tracker.h"
+
+1741703181 c:\users\tuanngth\desktop\chase\spaceship.h
+	"GameHeader.h"
+	"GameObject.h"
+
+1741703181 c:\users\tuanngth\desktop\chase\tracker.h
+	"GameHeader.h"
+	"GameObject.h"
+	"Spaceship.h"
+
+1741703551 source:c:\users\tuanngth\desktop\chase\spaceship.cpp
+	"Spaceship.h"
+
+1741703541 source:c:\users\tuanngth\desktop\chase\tracker.cpp
+	"Tracker.h"
+
+1741703191 source:c:\users\tuanngth\desktop\chase\button.cpp
+	"Button.h"
+
+1741703191 c:\users\tuanngth\desktop\chase\button.h
+	"Texture.h"
+
+1741703229 c:\users\tuanngth\desktop\chase\texture.h
+	"GameHeader.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+
+1741703046 source:c:\users\tuanngth\desktop\chase\painter.cpp
+	"Painter.h"
+
+1741703301 c:\users\tuanngth\desktop\chase\painter.h
+	"Texture.h"
+	"Button.h"
+	"GameObject.h"
+
+1741703191 source:c:\users\tuanngth\desktop\chase\texture.cpp
+	"Texture.h"
+
+1741703563 source:c:\users\tuanngth\desktop\chase\gameengine.cpp
+	"GameEngine.h"
+
+1741703258 c:\users\tuanngth\desktop\chase\gameengine.h
+	"GameHeader.h"
+	"GameUI.h"
+	"GameObject.h"
+	"Spaceship.h"
+	"Rocket.h"
+	"Tracker.h"
+	"Barrier.h"
+
+1741703191 c:\users\tuanngth\desktop\chase\gameui.h
+	"Painter.h"
+	"Mixer.h"
+
+1741703258 c:\users\tuanngth\desktop\chase\mixer.h
+	"GameHeader.h"
+	<SDL_mixer.h>
+
+1741703577 source:c:\users\tuanngth\desktop\chase\gameui.cpp
+	"GameUI.h"
+
+1741703258 source:c:\users\tuanngth\desktop\chase\main.cpp
+	"GameEngine.h"
+	"GameUI.h"
+
+1741703191 source:c:\users\tuanngth\desktop\chase\mixer.cpp
+	"Mixer.h"
+
