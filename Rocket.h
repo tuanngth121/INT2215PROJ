@@ -46,7 +46,7 @@ private:
 
     Coordinate velocityVector;
     int velocityValue;
-    
+
     Spaceship *p_chasing;
     Spaceship *p_previousChasing;
 

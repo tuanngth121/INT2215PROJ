@@ -105,6 +105,7 @@ void GameEngine::handleCollision(const GameUI *_p_gameUI)
 
         if (p_spaceship[i]->checkCollision_inside(p_barrier))
         {
+
             p_spaceship[i]->handleCollision(ObjectType::BARRIER);
         }
 

@@ -1,4 +1,7 @@
 #include "Painter.h"
+#include "barrier.h"
+#include "GameHeader.h"
+#include "Rocket.h"
 
 Painter::~Painter()
 {
@@ -39,12 +42,12 @@ bool Painter::loadTexture()
         std::cout << "Unable to load background texture." << std::endl;
         return false;
     }
-    if (!menuTitleTexture.loadFromRenderedText(p_renderer, p_titleTextFont, "CHASE", MAIN_COLOR))
+    if (!menuTitleTexture.loadFromRenderedText(p_renderer, p_titleTextFont, "DODGE GAME", MAIN_COLOR))
     {
         std::cout << "Unable to load title texture." << std::endl;
         return false;
     }
-    if (!startMenuTitleTexture.loadFromRenderedText(p_renderer, p_titleTextFont, "GAME MODE", MAIN_COLOR))
+    if (!startMenuTitleTexture.loadFromRenderedText(p_renderer, p_titleTextFont, "PLAYERS ?", MAIN_COLOR))
     {
         std::cout << "Unable to load start menu title texture." << std::endl;
         return false;
@@ -122,7 +125,6 @@ bool Painter::loadTexture()
         std::cout << "Unable to load mini menu title texture." << std::endl;
         return false;
     }
-
     // Guide texture
     if (!guideTexture[Player::PLAYER_1].loadFromFile(p_renderer, "./asset/png/menu/player_1.png"))
     {
@@ -189,6 +191,7 @@ void Painter::free()
     TTF_CloseFont(p_winnerTextFont);
     p_winnerTextFont = nullptr;
 
+    fatesText.free();
     backgroundTexture.free();
     menuTitleTexture.free();
     miniMenuTitleTexture.free();
@@ -232,8 +235,8 @@ void Painter::drawPlayground(const std::vector<GameObject *> &_map) const
     static int frameCount = 0;
 
     // Draw barrier
-    static constexpr Size barrierSprite = {1400, 700};
-    static Coordinate barrierPosition = {100, 100};
+    static constexpr Size barrierSprite = {BARRIER_WIDTH, BARRIER_HEIGHT};
+    static Coordinate barrierPosition = {(SCREEN_WIDTH - BARRIER_WIDTH) / 2, (SCREEN_HEIGHT - BARRIER_HEIGHT) / 2 - 50};
     SDL_Rect barrierClip = {_map[ObjectType::BARRIER]->getState() * barrierSprite.w, 0, barrierSprite.w, barrierSprite.h};
     playgroundTexture[ObjectType::BARRIER].draw(p_renderer, barrierPosition, 0.0, &barrierClip);
 
@@ -302,14 +305,12 @@ void Painter::drawPlayground(const std::vector<GameObject *> &_map) const
 
 void Painter::drawFate(const Player &_driver, const int &_fate) const
 {
-    static constexpr Coordinate fatePosition[4][3] =
+    static constexpr Coordinate fatePosition[3][3] =
     {
-        {{34, SCREEN_HEIGHT - 118}, {34, SCREEN_HEIGHT - 66}, {86, SCREEN_HEIGHT - 66}},
-        {{SCREEN_WIDTH - 66, SCREEN_HEIGHT - 118}, {SCREEN_WIDTH - 66, SCREEN_HEIGHT - 66}, {SCREEN_WIDTH - 118, SCREEN_HEIGHT - 66}},
-        {{34, 86},{34, 34},{86, 34}},
-        {{SCREEN_WIDTH - 66, 86},{SCREEN_WIDTH - 66, 34}, {SCREEN_WIDTH - 118, 34}}
+        {{370, 890}, {450, 890}, {530, 890}},
+        {{1340, 890}, {1420, 890}, {1500, 890}},
+        {{370, 940}, {450, 940}, {530, 940}},
     };
-
     for (int i = 0; i < _fate; i++)
     {
         fateTexture[_driver].draw(p_renderer, fatePosition[_driver][i], 0.0);

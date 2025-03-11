@@ -5,13 +5,18 @@
 #define SPACESHIP_VELOCITY 5
 #define SPACESHIP_WIDTH 50
 #define SPACESHIP_HEIGHT 50
+#define TOPP 190
+#define BOTT 890
+#define RIGHTT 260
+#define LEFTT 1790
+
 
 class Spaceship : public GameObject
 {
 public:
     static constexpr int MAX_FATE = 3;
     static constexpr double SPACESHIP_RESETING_TIME = 1.5;
-    
+
     static constexpr int STATE_DISABLE = -1;
     static constexpr int STATE_ENABLE_DEFAULT = 0;
     static constexpr int STATE_ENABLE_RESETING = 1;
@@ -20,7 +25,7 @@ public:
     {
         driver = _driver;
         fate = MAX_FATE;
-        
+
         key = {0, 0, 0, 0};
         velocityVector= {0, 0};
         velocityValue = SPACESHIP_VELOCITY;
@@ -49,7 +54,7 @@ public:
 private:
     Player driver;
     int fate;
-    
+
     MovementControl key;
     Coordinate velocityVector;
     int velocityValue;

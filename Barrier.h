@@ -3,7 +3,7 @@
 #include "GameObject.h"
 
 #define BARRIER_WIDTH 1400
-#define BARRIER_HEIGHT 700
+#define BARRIER_HEIGHT 750
 
 class Barrier : public GameObject
 {
@@ -13,7 +13,7 @@ public:
     static constexpr int STATE_ENABLE_PLAYER_2 = 1;
     static constexpr int STATE_ENABLE_PLAYER_3 = 2;
 
-    Barrier() : GameObject(ObjectType::BARRIER, {BARRIER_WIDTH, BARRIER_HEIGHT}, {(SCREEN_WIDTH - BARRIER_WIDTH) / 2, (SCREEN_HEIGHT - BARRIER_HEIGHT) / 2}) {}
+    Barrier() : GameObject(ObjectType::BARRIER, {BARRIER_WIDTH, BARRIER_HEIGHT}, {(SCREEN_WIDTH - BARRIER_WIDTH) / 2, (SCREEN_HEIGHT - BARRIER_HEIGHT) / 2 - 50}) {}
     virtual ~Barrier() = default;
 
     void updateState(const Player &_driver);

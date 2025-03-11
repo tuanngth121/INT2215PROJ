@@ -1,4 +1,6 @@
 #include "Spaceship.h"
+#include <iostream>
+using namespace std;
 
 Player Spaceship::getDriver() const
 {

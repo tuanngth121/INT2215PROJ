@@ -24,6 +24,7 @@ public:
         backgroundTexture = Texture();
         menuTitleTexture = Texture();
         miniMenuTitleTexture = Texture();
+        fatesText = Texture();
         startMenuTitleTexture = Texture();
 
         fateTexture = std::vector<Texture>(Player::TOTAL_PLAYERS, Texture());
@@ -58,6 +59,7 @@ protected:
     Texture backgroundTexture;
     Texture menuTitleTexture;
     Texture miniMenuTitleTexture;
+    Texture fatesText;
     Texture startMenuTitleTexture;
 
     std::vector<Texture> playgroundTexture;

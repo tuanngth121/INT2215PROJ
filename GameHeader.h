@@ -5,11 +5,11 @@
 #include <ctime>
 #include <chrono>
 
-#define SCREEN_WIDTH 1600
-#define SCREEN_HEIGHT 900
+#define SCREEN_WIDTH 1920
+#define SCREEN_HEIGHT 1080
 
 #define MIN_PLAYERS_NUMBER 2
-#define MAX_PLAYERS_NUMER 3
+#define MAX_PLAYERS_NUMBER 3
 
 #define CLOCK_NOW std::chrono::system_clock::now
 typedef std::chrono::duration<double> ElapsedTime;

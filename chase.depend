@@ -2,11 +2,11 @@
 1741703541 source:c:\users\tuanngth\desktop\chase\barrier.cpp
 	"Barrier.h"
 
-1741703541 c:\users\tuanngth\desktop\chase\barrier.h
+1741712101 c:\users\tuanngth\desktop\chase\barrier.h
 	"GameHeader.h"
 	"GameObject.h"
 
-1741703541 c:\users\tuanngth\desktop\chase\gameheader.h
+1741708623 c:\users\tuanngth\desktop\chase\gameheader.h
 	<iostream>
 	<vector>
 	<cmath>
@@ -22,13 +22,13 @@
 1741703181 source:c:\users\tuanngth\desktop\chase\rocket.cpp
 	"Rocket.h"
 
-1741703181 c:\users\tuanngth\desktop\chase\rocket.h
+1741717772 c:\users\tuanngth\desktop\chase\rocket.h
 	"GameHeader.h"
 	"GameObject.h"
 	"Spaceship.h"
 	"Tracker.h"
 
-1741703181 c:\users\tuanngth\desktop\chase\spaceship.h
+1741710135 c:\users\tuanngth\desktop\chase\spaceship.h
 	"GameHeader.h"
 	"GameObject.h"
 
@@ -37,8 +37,9 @@
 	"GameObject.h"
 	"Spaceship.h"
 
-1741703551 source:c:\users\tuanngth\desktop\chase\spaceship.cpp
+1741710612 source:c:\users\tuanngth\desktop\chase\spaceship.cpp
 	"Spaceship.h"
+	<iostream>
 
 1741703541 source:c:\users\tuanngth\desktop\chase\tracker.cpp
 	"Tracker.h"
@@ -55,10 +56,13 @@
 	<SDL_image.h>
 	<SDL_ttf.h>
 
-1741703046 source:c:\users\tuanngth\desktop\chase\painter.cpp
+1741717461 source:c:\users\tuanngth\desktop\chase\painter.cpp
 	"Painter.h"
+	"barrier.h"
+	"GameHeader.h"
+	"Rocket.h"
 
-1741703301 c:\users\tuanngth\desktop\chase\painter.h
+1741717318 c:\users\tuanngth\desktop\chase\painter.h
 	"Texture.h"
 	"Button.h"
 	"GameObject.h"
@@ -66,7 +70,7 @@
 1741703191 source:c:\users\tuanngth\desktop\chase\texture.cpp
 	"Texture.h"
 
-1741703563 source:c:\users\tuanngth\desktop\chase\gameengine.cpp
+1741714247 source:c:\users\tuanngth\desktop\chase\gameengine.cpp
 	"GameEngine.h"
 
 1741703258 c:\users\tuanngth\desktop\chase\gameengine.h
@@ -86,10 +90,10 @@
 	"GameHeader.h"
 	<SDL_mixer.h>
 
-1741703577 source:c:\users\tuanngth\desktop\chase\gameui.cpp
+1741705230 source:c:\users\tuanngth\desktop\chase\gameui.cpp
 	"GameUI.h"
 
-1741703258 source:c:\users\tuanngth\desktop\chase\main.cpp
+1741706936 source:c:\users\tuanngth\desktop\chase\main.cpp
 	"GameEngine.h"
 	"GameUI.h"
 

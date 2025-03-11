@@ -7,7 +7,7 @@ Coordinate Rocket::getVelocityVector() const
 
 void Rocket::updateState()
 {
-    static constexpr Coordinate startPosition[8] = 
+    static constexpr Coordinate startPosition[8] =
     {
         {SCREEN_WIDTH / 4 - ROCKET_WIDTH / 2, SCREEN_HEIGHT * 3},
         {(SCREEN_WIDTH * 3) / 4 - ROCKET_WIDTH / 2, SCREEN_HEIGHT * 3},

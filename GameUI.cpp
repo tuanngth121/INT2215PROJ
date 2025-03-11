@@ -18,7 +18,7 @@ bool GameUI::init()
         {
             std::cout << "Warning: Linear texture filtering not enabled." << std::endl;
         }
-        p_window = SDL_CreateWindow("Chase 1.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+        p_window = SDL_CreateWindow("My very first game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         if (p_window == nullptr)
         {
             std::cout << "Unable to create window. Error: " << SDL_GetError() << std::endl;
