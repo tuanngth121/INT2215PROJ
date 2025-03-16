@@ -154,7 +154,6 @@ struct ShootingControl
     unsigned char p1;
     unsigned char p2;
     unsigned char p3;
-    unsigned char p4;
 };
 
 enum Side
@@ -173,7 +172,7 @@ enum ObjectType
     TRACKER,
     SPACESHIP,
     TOTAL_TYPES,
-    NONE_TYPE
+    NONE_TYPE,
 };
 
 enum Player

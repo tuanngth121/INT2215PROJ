@@ -16,13 +16,13 @@ public:
 
     Tracker() : GameObject(ObjectType::TRACKER, {TRACKER_WIDTH, TRACKER_HEIGHT})
     {
-        key = {0, 0, 0, 0};
+        key = {0, 0, 0};
         velocityVector = {0, 0};
         acceleration = 0;
 
         p_tracking = nullptr;
         p_previousTracking = nullptr;
-        
+
         for (int i = 0; i < Side::TOTAL_SIDES; i++)
         {
             collision[i] = false;
@@ -48,7 +48,7 @@ private:
     ShootingControl key;
     Coordinate velocityVector;
     int acceleration;
-    
+
     Spaceship *p_tracking;
     Spaceship *p_previousTracking;
 

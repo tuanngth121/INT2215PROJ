@@ -35,6 +35,8 @@
 		<Unit filename="Barrier.h" />
 		<Unit filename="Button.cpp" />
 		<Unit filename="Button.h" />
+		<Unit filename="Frozen.cpp" />
+		<Unit filename="Frozen.h" />
 		<Unit filename="GameEngine.cpp" />
 		<Unit filename="GameEngine.h" />
 		<Unit filename="GameHeader.h" />

@@ -20,12 +20,11 @@ public:
             {SDL_SCANCODE_Y, SDL_SCANCODE_H, SDL_SCANCODE_G, SDL_SCANCODE_J},
             {SDL_SCANCODE_P, SDL_SCANCODE_SEMICOLON, SDL_SCANCODE_L, SDL_SCANCODE_APOSTROPHE}
         };
-        shootintKey =
+        ShootingKey =
         {
             SDL_SCANCODE_R,
             SDL_SCANCODE_SLASH,
             SDL_SCANCODE_I,
-            SDL_SCANCODE_RIGHTBRACKET
         };
     }
     ~GameUI();
@@ -50,7 +49,7 @@ public:
 
     void initMiniMenuButton();
     void handleMiniMenuEvent(Status &_status);
-    
+
     void initGuideMenuButton();
     void handleGuideMenuEvent(Status &_status);
 
@@ -72,5 +71,5 @@ private:
 
     int playerNumber;
     std::vector<MovementControl> movementKey;
-    ShootingControl shootintKey;
+    ShootingControl ShootingKey;
 };

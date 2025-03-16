@@ -95,9 +95,9 @@ void GameUI::initMainMenuButton()
     button[ButtonType::GUIDE_BUTTON].setSize({256, 64});
     button[ButtonType::EXIT_BUTTON].setSize({256, 64});
 
-    button[ButtonType::START_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::START_BUTTON].getSize().w) / 2, 400});
-    button[ButtonType::GUIDE_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::START_BUTTON].getSize().w) / 2, 500});
-    button[ButtonType::EXIT_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::START_BUTTON].getSize().w) / 2, 600});
+    button[ButtonType::START_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::START_BUTTON].getSize().w) / 2, 450});
+    button[ButtonType::GUIDE_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::GUIDE_BUTTON].getSize().w) / 2, 550});
+    button[ButtonType::EXIT_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::EXIT_BUTTON].getSize().w) / 2, 650});
 
     button[ButtonType::START_BUTTON].setSprite(Button::SPRITE_DEFAULT);
     button[ButtonType::GUIDE_BUTTON].setSprite(Button::SPRITE_DEFAULT);
@@ -160,9 +160,9 @@ void GameUI::initMiniMenuButton()
     button[ButtonType::RESUME_BUTTON].setSize({256, 64});
     button[ButtonType::EXIT_BUTTON].setSize({256, 64});
 
-    button[ButtonType::RESUME_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::RESUME_BUTTON].getSize().w) / 2, 400});
-    button[ButtonType::RESTART_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::RESTART_BUTTON].getSize().w) / 2, 500});
-    button[ButtonType::EXIT_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::START_BUTTON].getSize().w) / 2, 600});
+    button[ButtonType::RESUME_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::RESUME_BUTTON].getSize().w) / 2, 450});
+    button[ButtonType::RESTART_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::RESTART_BUTTON].getSize().w) / 2, 550});
+    button[ButtonType::EXIT_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::EXIT_BUTTON].getSize().w) / 2, 650});
 
     button[ButtonType::RESUME_BUTTON].setSprite(Button::SPRITE_DEFAULT);
     button[ButtonType::RESTART_BUTTON].setSprite(Button::SPRITE_DEFAULT);
@@ -249,8 +249,8 @@ void GameUI::initStartMenuButton()
     button[ButtonType::TWO_PLAYER_BUTTON].setSize({512, 128});
     button[ButtonType::THREE_PLAYER_BUTTON].setSize({512, 128});
 
-    button[ButtonType::TWO_PLAYER_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::TWO_PLAYER_BUTTON].getSize().w) / 2, 300});
-    button[ButtonType::THREE_PLAYER_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::THREE_PLAYER_BUTTON].getSize().w) / 2, 500});
+    button[ButtonType::TWO_PLAYER_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::TWO_PLAYER_BUTTON].getSize().w) / 2, 450});
+    button[ButtonType::THREE_PLAYER_BUTTON].setPosition({(SCREEN_WIDTH - button[ButtonType::THREE_PLAYER_BUTTON].getSize().w) / 2, 650});
 
     button[ButtonType::TWO_PLAYER_BUTTON].setSprite(Button::SPRITE_DEFAULT);
     button[ButtonType::THREE_PLAYER_BUTTON].setSprite(Button::SPRITE_DEFAULT);
@@ -301,7 +301,7 @@ std::vector<MovementControl> GameUI::getMovementKey() const
 
 ShootingControl GameUI::getShootingKey() const
 {
-    return shootintKey;
+    return ShootingKey;
 }
 
 int GameUI::getPlayerNumber() const

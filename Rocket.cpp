@@ -7,17 +7,25 @@ Coordinate Rocket::getVelocityVector() const
 
 void Rocket::updateState()
 {
-    static constexpr Coordinate startPosition[8] =
+    static constexpr Coordinate startPosition[15] =
     {
-        {SCREEN_WIDTH / 4 - ROCKET_WIDTH / 2, SCREEN_HEIGHT * 3},
-        {(SCREEN_WIDTH * 3) / 4 - ROCKET_WIDTH / 2, SCREEN_HEIGHT * 3},
-        {SCREEN_WIDTH / 4 - ROCKET_WIDTH / 2, -SCREEN_HEIGHT * 2},
-        {(SCREEN_WIDTH * 3) / 4 - ROCKET_WIDTH / 2, -SCREEN_HEIGHT * 2},
-        {SCREEN_WIDTH * 2, SCREEN_HEIGHT / 4 - ROCKET_HEIGHT / 2},
-        {SCREEN_WIDTH * 2, (SCREEN_HEIGHT * 3) / 4 - ROCKET_HEIGHT / 2},
-        {-SCREEN_WIDTH, SCREEN_HEIGHT / 2 - ROCKET_HEIGHT / 2},
-        {-SCREEN_WIDTH, (SCREEN_HEIGHT * 3) / 4 - ROCKET_HEIGHT / 2}
+        {SCREEN_WIDTH / 4, SCREEN_HEIGHT * 3},
+        {(SCREEN_WIDTH * 3) / 4, SCREEN_HEIGHT * 3},
+        {SCREEN_WIDTH / 4, -SCREEN_HEIGHT * 2},
+        {(SCREEN_WIDTH * 3) / 4, -SCREEN_HEIGHT * 2},
+        {SCREEN_WIDTH * 2, SCREEN_HEIGHT / 4},
+        {SCREEN_WIDTH * 2, (SCREEN_HEIGHT * 3) / 4},
+        {-SCREEN_WIDTH, SCREEN_HEIGHT / 2},
+        {-SCREEN_WIDTH, (SCREEN_HEIGHT * 3) / 4},
+        {SCREEN_WIDTH / 2, -SCREEN_HEIGHT},
+        {SCREEN_WIDTH / 2, SCREEN_HEIGHT * 2},
+        {SCREEN_WIDTH * 1, SCREEN_HEIGHT / 3},
+        {-SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3},
+        {SCREEN_WIDTH * 1, SCREEN_HEIGHT * 1},
+        {-SCREEN_WIDTH * 1, SCREEN_HEIGHT * 1},
+        {SCREEN_WIDTH * 1, -SCREEN_HEIGHT * 1}
     };
+
 
     if (state == STATE_ENABLE_EXPLOSION)
     {
@@ -25,7 +33,7 @@ void Rocket::updateState()
         if (livingTime.calculateDuration() > ROCKET_EXPLOSION_TIME)
         {
             state = STATE_DISABLE;
-            position = startPosition[rand() % 8];
+            position = startPosition[rand() % 15];
         }
     }
     else

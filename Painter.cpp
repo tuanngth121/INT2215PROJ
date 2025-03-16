@@ -191,7 +191,6 @@ void Painter::free()
     TTF_CloseFont(p_winnerTextFont);
     p_winnerTextFont = nullptr;
 
-    fatesText.free();
     backgroundTexture.free();
     menuTitleTexture.free();
     miniMenuTitleTexture.free();
@@ -279,7 +278,7 @@ void Painter::drawPlayground(const std::vector<GameObject *> &_map) const
     // Draw tracker
     if (_map[ObjectType::TRACKER] != nullptr)
     {
-        playgroundTexture[ObjectType::TRACKER].draw(p_renderer, _map[ObjectType::TRACKER]->getPosition());
+        playgroundTexture[ObjectType::TRACKER].draw(p_renderer, _map[ObjectType::TRACKER]->getPosition(), 0.0, nullptr);
     }
 
     // Draw spaceships
@@ -399,9 +398,9 @@ void Painter::drawMainMenu(const std::vector<Button> &_buttonMap) const
 
 void Painter::drawGuideMenu(const std::vector<Button> &_buttonMap) const
 {
-    guideTexture[Player::PLAYER_1].draw(p_renderer, {100, 100});
-    guideTexture[Player::PLAYER_2].draw(p_renderer, {850, 100});
-    guideTexture[Player::PLAYER_3].draw(p_renderer, {100, 450});
+    guideTexture[Player::PLAYER_1].draw(p_renderer, {200, 100});
+    guideTexture[Player::PLAYER_2].draw(p_renderer, {950, 100});
+    guideTexture[Player::PLAYER_3].draw(p_renderer, {200, 450});
 
     int exitButtonSprite = _buttonMap[ButtonType::EXIT_BUTTON].getSprite();
     SDL_Rect exitButtonClip =

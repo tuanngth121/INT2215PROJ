@@ -5,10 +5,6 @@
 #define SPACESHIP_VELOCITY 5
 #define SPACESHIP_WIDTH 50
 #define SPACESHIP_HEIGHT 50
-#define TOPP 190
-#define BOTT 890
-#define RIGHTT 260
-#define LEFTT 1790
 
 
 class Spaceship : public GameObject
