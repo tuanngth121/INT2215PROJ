@@ -1,4 +1,4 @@
-#include "Button.h"
+#include "Header.h"
 
 Coordinate Button::getPosition() const
 {
@@ -39,7 +39,7 @@ void Button::handleEvent(SDL_Event *_p_event)
 {
     Coordinate mousePosition;
     SDL_GetMouseState(&mousePosition.x, &mousePosition.y);
-    
+
     bool inside = true;
     if (mousePosition.x < position.x || mousePosition.x > position.x + size.w || mousePosition.y < position.y || mousePosition.y > position.y + size.h)
     {

@@ -1,5 +1,4 @@
-#include "GameEngine.h"
-#include "GameUI.h"
+#include "Header.h"
 
 void runGuideMenu(GameUI *_p_gameUI)
 {

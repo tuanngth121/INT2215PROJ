@@ -1,7 +1,4 @@
-#include "Painter.h"
-#include "barrier.h"
-#include "GameHeader.h"
-#include "Rocket.h"
+#include "Header.h"
 
 Painter::~Painter()
 {
@@ -172,7 +169,8 @@ bool Painter::loadTexture()
     {
         std::cout << "Unable to load button texture." << std::endl;
         return false;
-    }if (!buttonTexture[ButtonType::THREE_PLAYER_BUTTON].loadFromFile(p_renderer, "./asset/png/menu/three_player_button.png"))
+    }
+    if (!buttonTexture[ButtonType::THREE_PLAYER_BUTTON].loadFromFile(p_renderer, "./asset/png/menu/three_player_button.png"))
     {
         std::cout << "Unable to load button texture." << std::endl;
         return false;

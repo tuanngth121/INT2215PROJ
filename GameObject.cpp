@@ -1,4 +1,4 @@
-#include "GameObject.h"
+#include "Header.h"
 
 ObjectType GameObject::getType() const
 {

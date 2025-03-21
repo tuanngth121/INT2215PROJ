@@ -1,6 +1,4 @@
-#include "Spaceship.h"
-#include <iostream>
-using namespace std;
+#include "Header.h"
 
 Player Spaceship::getDriver() const
 {
