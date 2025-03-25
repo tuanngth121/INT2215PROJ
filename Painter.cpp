@@ -318,7 +318,7 @@ void Painter::drawMiniMenu(const Player &_winner, const std::vector<Button> &_bu
 {
     if (_winner == Player::NONE_PLAYER)
     {
-        Coordinate titlePosition = {(SCREEN_WIDTH - miniMenuTitleTexture.getSize().w) / 2, (SCREEN_HEIGHT - miniMenuTitleTexture.getSize().h) / 6};
+        Coordinate titlePosition = {(SCREEN_WIDTH - miniMenuTitleTexture.getSize().w) / 2, (SCREEN_HEIGHT - miniMenuTitleTexture.getSize().h) / 6 + 50};
         miniMenuTitleTexture.draw(p_renderer, titlePosition);
     }
     else
@@ -360,7 +360,7 @@ void Painter::drawMiniMenu(const Player &_winner, const std::vector<Button> &_bu
 
 void Painter::drawMainMenu(const std::vector<Button> &_buttonMap) const
 {
-    static Coordinate titlePosition = {(SCREEN_WIDTH - menuTitleTexture.getSize().w) / 2, (SCREEN_HEIGHT - menuTitleTexture.getSize().h) / 6};
+    static Coordinate titlePosition = {(SCREEN_WIDTH - menuTitleTexture.getSize().w) / 2, (SCREEN_HEIGHT - menuTitleTexture.getSize().h) / 6 + 50};
     menuTitleTexture.draw(p_renderer, titlePosition);
 
     int startButtonSprite = _buttonMap[ButtonType::START_BUTTON].getSprite();

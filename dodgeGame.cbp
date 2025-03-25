@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="chase" />
+		<Option title="dodgeGame" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -31,29 +31,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Barrier.cpp" />
-		<Unit filename="Barrier.h" />
 		<Unit filename="Button.cpp" />
-		<Unit filename="Button.h" />
 		<Unit filename="GameEngine.cpp" />
-		<Unit filename="GameEngine.h" />
-		<Unit filename="GameHeader.h" />
 		<Unit filename="GameObject.cpp" />
-		<Unit filename="GameObject.h" />
 		<Unit filename="GameUI.cpp" />
-		<Unit filename="GameUI.h" />
+		<Unit filename="Header.h" />
 		<Unit filename="Mixer.cpp" />
-		<Unit filename="Mixer.h" />
 		<Unit filename="Painter.cpp" />
-		<Unit filename="Painter.h" />
 		<Unit filename="Rocket.cpp" />
-		<Unit filename="Rocket.h" />
 		<Unit filename="Spaceship.cpp" />
-		<Unit filename="Spaceship.h" />
 		<Unit filename="Texture.cpp" />
-		<Unit filename="Texture.h" />
-		<Unit filename="Tracker.cpp" />
-		<Unit filename="Tracker.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
