@@ -396,9 +396,9 @@ void Painter::drawMainMenu(const std::vector<Button> &_buttonMap) const
 
 void Painter::drawGuideMenu(const std::vector<Button> &_buttonMap) const
 {
-    guideTexture[Player::PLAYER_1].draw(p_renderer, {200, 100});
-    guideTexture[Player::PLAYER_2].draw(p_renderer, {950, 100});
-    guideTexture[Player::PLAYER_3].draw(p_renderer, {200, 450});
+    guideTexture[Player::PLAYER_1].draw(p_renderer, {260, 100});
+    guideTexture[Player::PLAYER_2].draw(p_renderer, {1010, 100});
+    guideTexture[Player::PLAYER_3].draw(p_renderer, {650, 450});
 
     int exitButtonSprite = _buttonMap[ButtonType::EXIT_BUTTON].getSprite();
     SDL_Rect exitButtonClip =
@@ -413,7 +413,7 @@ void Painter::drawGuideMenu(const std::vector<Button> &_buttonMap) const
 
 void Painter::drawStartMenu(const std::vector<Button> &_buttonMap) const
 {
-    static Coordinate titlePosition = {(SCREEN_WIDTH - startMenuTitleTexture.getSize().w) / 2, (SCREEN_HEIGHT - startMenuTitleTexture.getSize().h) / 8};
+    static Coordinate titlePosition = {(SCREEN_WIDTH - startMenuTitleTexture.getSize().w) / 2, (SCREEN_HEIGHT - startMenuTitleTexture.getSize().h) / 8 + 45};
     startMenuTitleTexture.draw(p_renderer, titlePosition);
 
     int twoPlayerButtonSprite = _buttonMap[ButtonType::TWO_PLAYER_BUTTON].getSprite();
