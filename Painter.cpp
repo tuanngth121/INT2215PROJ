@@ -341,26 +341,6 @@ void Painter::drawMiniMenu(const Player &_winner, const std::vector<Button> &_bu
     }
     else
     {
-        std::ifstream file("./score.txt");
-        std::vector<int> scores;
-        int score;
-        while (file >> score)
-        {
-            scores.push_back(score);
-        }
-        file.close();
-
-        if (_winner >= 0 && _winner < scores.size())
-        {
-            scores[_winner]++;
-        }
-
-        std::ofstream outFile("./score.txt");
-        for (size_t i = 0; i < scores.size(); ++i)
-        {
-            outFile << scores[i] << "\n";
-        }
-        outFile.close();
         Coordinate titlePosition = {(SCREEN_WIDTH - miniMenuTexture[_winner].getSize().w) / 2, (SCREEN_HEIGHT - miniMenuTexture[_winner].getSize().h) / 4};
         miniMenuTexture[_winner].draw(p_renderer, titlePosition);
     }

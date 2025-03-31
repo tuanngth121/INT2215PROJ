@@ -1,4 +1,6 @@
 #include "Header.h"
+#include <fstream>
+
 
 void runGuideMenu(GameUI *_p_gameUI)
 {
@@ -37,6 +39,28 @@ void runMiniMenu(GameUI *_p_gameUI, Status &_status, const Player &_winner)
 {
     // Mini menu & Winner display
     _p_gameUI->initMiniMenuButton();
+    if(_status == Status::END_STATUS && _winner != Player::NONE_PLAYER){
+        std::ifstream file("./score.txt");
+        std::vector<int> scores;
+        int score;
+        while (file >> score)
+        {
+            scores.push_back(score);
+        }
+        file.close();
+
+        if (_winner >= 0 && _winner < scores.size())
+        {
+            scores[_winner]++;
+        }
+
+        std::ofstream outFile("./score.txt");
+        for (size_t i = 0; i < scores.size(); ++i)
+        {
+            outFile << scores[i] << "\n";
+        }
+        outFile.close();
+    }
     while ((_status == Status::END_STATUS || _status == Status::PAUSE_STATUS) && !_p_gameUI->isQuit())
     {
         _p_gameUI->handleMiniMenuEvent(_status);
