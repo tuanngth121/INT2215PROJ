@@ -168,8 +168,6 @@ void Rocket::reset()
     livingTime.begin = CLOCK_NOW();
 }
 
-#include "Header.h"
-
 Spaceship *Tracker::getTracking() const
 {
     return p_tracking;
@@ -219,30 +217,41 @@ bool Tracker::checkCollision_outside(const GameObject *_p_other)
 
 void Tracker::findTarget(const std::vector<Spaceship *> &_p_spaceship)
 {
-    velocityVector = (p_tracking->getVelocityVector() * TRACKER_VELOCITY) / SPACESHIP_VELOCITY;
-    if (velocityVector.x != 0 || velocityVector.y != 0)
-    {
-        p_previousTracking = p_tracking;
-        state = STATE_ENABLE_DEFAULT;
+    if (!p_tracking) return;
 
-        for (auto spaceship : _p_spaceship)
-        {
-            if (spaceship->getState() != Spaceship::STATE_ENABLE_DEFAULT)
-            {
-                continue;
-            }
-            if (p_tracking->getDriver() != spaceship->getDriver())
-            {
-                Coordinate radiusVector = spaceship->getPosition() - p_tracking->getPosition();
-                if ((velocityVector.x * radiusVector.x > 0) && (velocityVector.y * radiusVector.y > 0))
-                {
-                    p_tracking = spaceship;
-                    return;
-                }
-            }
-        }
+    velocityVector = (p_tracking->getVelocityVector() * TRACKER_VELOCITY) / SPACESHIP_VELOCITY;
+
+    if (velocityVector.x == 0 && velocityVector.y == 0)
+    {
         p_tracking = nullptr;
+        return;
     }
+
+    p_previousTracking = p_tracking;
+    state = STATE_ENABLE_DEFAULT;
+
+    Spaceship *closestSpaceship = nullptr;
+    double minDistance = std::numeric_limits<double>::max();
+
+    for (auto spaceship : _p_spaceship)
+    {
+        if (spaceship->getState() != Spaceship::STATE_ENABLE_DEFAULT ||
+            spaceship->getDriver() == p_tracking->getDriver())
+        {
+            continue;
+        }
+
+        Coordinate radiusVector = spaceship->getPosition() - p_tracking->getPosition();
+        double distance = radiusVector.calculateNorm();
+
+        if (distance < minDistance)
+        {
+            minDistance = distance;
+            closestSpaceship = spaceship;
+        }
+    }
+
+    p_tracking = closestSpaceship;
 }
 
 void Tracker::move(const unsigned char *_p_keyState, const std::vector<Spaceship *> &_p_spaceship)
@@ -289,12 +298,40 @@ void Tracker::move(const unsigned char *_p_keyState, const std::vector<Spaceship
                 || (_p_keyState[key.p2] && (p_tracking->getDriver() == Player::PLAYER_2))
                 || (_p_keyState[key.p3] && (p_tracking->getDriver() == Player::PLAYER_3)))
             {
-
-                findTarget(_p_spaceship);
+                switchTarget(_p_spaceship);
             }
         }
     }
 }
+
+void Tracker::switchTarget(const std::vector<Spaceship *> &_p_spaceship)
+{
+    Spaceship *newTarget = nullptr;
+    double minDistance = std::numeric_limits<double>::max();
+
+    for (auto spaceship : _p_spaceship)
+    {
+        if (spaceship->getState() != Spaceship::STATE_ENABLE_DEFAULT ||
+            spaceship->getDriver() == p_tracking->getDriver() ||
+            spaceship == p_tracking)
+        {
+            continue;
+        }
+
+        double distance = (spaceship->getPosition() - p_tracking->getPosition()).calculateNorm();
+        if (distance < minDistance)
+        {
+            minDistance = distance;
+            newTarget = spaceship;
+        }
+    }
+
+    if (newTarget)
+    {
+        p_tracking = newTarget;
+    }
+}
+
 
 void Tracker::handleCollision(const ObjectType &_type, Spaceship *_p_spaceship)
 {

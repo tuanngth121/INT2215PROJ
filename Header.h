@@ -38,6 +38,7 @@
 #define SPACESHIP_WIDTH 50
 #define SPACESHIP_HEIGHT 50
 
+
 #define CLOCK_NOW std::chrono::system_clock::now
 typedef std::chrono::duration<double> ElapsedTime;
 typedef std::chrono::system_clock::time_point Moment;
@@ -596,7 +597,7 @@ public:
     bool checkCollision_outside(const GameObject *_p_other);
     void handleCollision(const ObjectType &_type, Spaceship *_p_spaceship = nullptr);
     void move(const unsigned char *_p_keyState, const std::vector<Spaceship *> &_p_spaceship);
-
+    void switchTarget(const std::vector<Spaceship *> &_p_spaceship);
     void reset(const std::vector<Spaceship *> &_p_spaceship);
 
 private:

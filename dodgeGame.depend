@@ -2,7 +2,7 @@
 1743348394 source:c:\users\tuanngth\desktop\chase\button.cpp
 	"Header.h"
 
-1743348395 c:\users\tuanngth\desktop\chase\header.h
+1743392306 c:\users\tuanngth\desktop\chase\header.h
 	<iostream>
 	<vector>
 	<cmath>
@@ -28,11 +28,10 @@
 1743348395 source:c:\users\tuanngth\desktop\chase\mixer.cpp
 	"Header.h"
 
-1742923194 source:c:\users\tuanngth\desktop\chase\painter.cpp
+1743349118 source:c:\users\tuanngth\desktop\chase\painter.cpp
 	"Header.h"
 
-1743348395 source:c:\users\tuanngth\desktop\chase\rocket.cpp
-	"Header.h"
+1743392050 source:c:\users\tuanngth\desktop\chase\rocket.cpp
 	"Header.h"
 
 1743348392 source:c:\users\tuanngth\desktop\chase\spaceship.cpp
