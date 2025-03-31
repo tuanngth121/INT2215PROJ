@@ -16,6 +16,23 @@ void runGuideMenu(GameUI *_p_gameUI)
     _p_gameUI->initMainMenuButton();
 }
 
+void runScore(GameUI *_p_gameUI)
+{
+    // Score menu
+    _p_gameUI->initScoreButton();
+    Status status = Status::BEGIN_STATUS;
+    while (status != Status::EXIT_STATUS && !_p_gameUI->isQuit())
+    {
+        _p_gameUI->handleScoreEvent(status);
+        _p_gameUI->clear();
+        _p_gameUI->drawBackground();
+        _p_gameUI->drawScoreMenu(_p_gameUI->getButtonMap());
+        _p_gameUI->drawScoreboard("./score.txt");
+        _p_gameUI->present();
+    }
+    _p_gameUI->initMainMenuButton();
+}
+
 void runMiniMenu(GameUI *_p_gameUI, Status &_status, const Player &_winner)
 {
     // Mini menu & Winner display
@@ -111,6 +128,11 @@ int main(int argc, char *argv[])
                 {
                     // Setting
                     runGuideMenu(p_gameUI);
+                    status = Status::NONE_STATUS;
+                }
+                else if (status == Status::SCORE_STATUS)
+                {
+                    runScore(p_gameUI);
                     status = Status::NONE_STATUS;
                 }
                 else if (status == Status::EXIT_STATUS)

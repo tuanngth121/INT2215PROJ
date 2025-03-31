@@ -1,4 +1,5 @@
 #include "Header.h"
+#include <fstream>
 
 Painter::~Painter()
 {
@@ -28,6 +29,13 @@ bool Painter::init(SDL_Window *_p_window)
         return false;
     }
 
+    p_scoreFont = TTF_OpenFont("./asset/ttf/title.ttf", 60);
+    if (p_scoreFont == nullptr)
+    {
+        std::cout << "Unable to opne font. Error: " << TTF_GetError() << std::endl;
+        return false;
+    }
+
     return true;
 }
 
@@ -49,7 +57,11 @@ bool Painter::loadTexture()
         std::cout << "Unable to load start menu title texture." << std::endl;
         return false;
     }
-
+    if (!scoreTexture.loadFromRenderedText(p_renderer, p_titleTextFont, "SCORE", MAIN_COLOR))
+    {
+        std::cout << "Unable to load start menu title texture." << std::endl;
+        return false;
+    }
     // Playground texture
     if (!playgroundTexture[ObjectType::ROCKET].loadFromFile(p_renderer, "./asset/png/playground/rocket.png"))
     {
@@ -160,6 +172,11 @@ bool Painter::loadTexture()
         std::cout << "Unable to load button texture." << std::endl;
         return false;
     }
+    if (!buttonTexture[ButtonType::SCORE_MENU_BUTTON].loadFromFile(p_renderer, "./asset/png/menu/score_button.png"))
+    {
+        std::cout << "Unable to load button texture." << std::endl;
+        return false;
+    }
     if (!buttonTexture[ButtonType::EXIT_BUTTON].loadFromFile(p_renderer, "./asset/png/menu/exit_button.png"))
     {
         std::cout << "Unable to load button texture." << std::endl;
@@ -191,6 +208,7 @@ void Painter::free()
 
     backgroundTexture.free();
     menuTitleTexture.free();
+    scoreTexture.free();
     miniMenuTitleTexture.free();
     startMenuTitleTexture.free();
 
@@ -323,6 +341,26 @@ void Painter::drawMiniMenu(const Player &_winner, const std::vector<Button> &_bu
     }
     else
     {
+        std::ifstream file("./score.txt");
+        std::vector<int> scores;
+        int score;
+        while (file >> score)
+        {
+            scores.push_back(score);
+        }
+        file.close();
+
+        if (_winner >= 0 && _winner < scores.size())
+        {
+            scores[_winner]++;
+        }
+
+        std::ofstream outFile("./score.txt");
+        for (size_t i = 0; i < scores.size(); ++i)
+        {
+            outFile << scores[i] << "\n";
+        }
+        outFile.close();
         Coordinate titlePosition = {(SCREEN_WIDTH - miniMenuTexture[_winner].getSize().w) / 2, (SCREEN_HEIGHT - miniMenuTexture[_winner].getSize().h) / 4};
         miniMenuTexture[_winner].draw(p_renderer, titlePosition);
     }
@@ -383,6 +421,17 @@ void Painter::drawMainMenu(const std::vector<Button> &_buttonMap) const
     };
     buttonTexture[ButtonType::GUIDE_BUTTON].draw(p_renderer, _buttonMap[ButtonType::GUIDE_BUTTON].getPosition(), 0.0, &guideButtonClip);
 
+    int scoreButtonSprite = _buttonMap[ButtonType::SCORE_MENU_BUTTON].getSprite();
+    SDL_Rect scoreButtonClip =
+    {
+        _buttonMap[ButtonType::SCORE_MENU_BUTTON].getSize().w * scoreButtonSprite,
+        0,
+        _buttonMap[ButtonType::SCORE_MENU_BUTTON].getSize().w,
+        _buttonMap[ButtonType::SCORE_MENU_BUTTON].getSize().h
+    };
+
+    buttonTexture[ButtonType::SCORE_MENU_BUTTON].draw(p_renderer, _buttonMap[ButtonType::SCORE_MENU_BUTTON].getPosition(), 0.0, &scoreButtonClip);
+
     int exitButtonSprite = _buttonMap[ButtonType::EXIT_BUTTON].getSprite();
     SDL_Rect exitButtonClip =
     {
@@ -410,6 +459,47 @@ void Painter::drawGuideMenu(const std::vector<Button> &_buttonMap) const
     };
     buttonTexture[ButtonType::EXIT_BUTTON].draw(p_renderer, _buttonMap[ButtonType::EXIT_BUTTON].getPosition(), 0.0, &exitButtonClip);
 }
+
+void Painter::drawScoreMenu(const std::vector<Button> &_buttonMap) const
+{
+    static Coordinate titlePosition = {(SCREEN_WIDTH - scoreTexture.getSize().w) / 2, (SCREEN_HEIGHT - scoreTexture.getSize().h) / 8 + 45};
+    scoreTexture.draw(p_renderer, titlePosition);
+
+    int exitButtonSprite = _buttonMap[ButtonType::EXIT_BUTTON].getSprite();
+    SDL_Rect exitButtonClip =
+    {
+        _buttonMap[ButtonType::EXIT_BUTTON].getSize().w * exitButtonSprite,
+        0,
+        _buttonMap[ButtonType::EXIT_BUTTON].getSize().w,
+        _buttonMap[ButtonType::EXIT_BUTTON].getSize().h
+    };
+    buttonTexture[ButtonType::EXIT_BUTTON].draw(p_renderer, _buttonMap[ButtonType::EXIT_BUTTON].getPosition(), 0.0, &exitButtonClip);
+}
+
+void Painter::drawScoreboard(const std::string &filename) const
+    {
+        std::ifstream file(filename);
+        if (!file.is_open())
+        {
+            std::cerr << "Không thể mở file bảng điểm!" << std::endl;
+            return;
+        }
+        std::vector<int> scores(3);
+        for (int i = 0; i < 3; i++){
+            file >> scores[i];
+        }
+        file.close();
+
+        int y_offset = 430;
+        for (size_t i = 0; i < scores.size(); ++i)
+        {
+            std::string text = "Player " + std::to_string(i + 1) + ": " + std::to_string(scores[i]);
+            Texture scoreText;
+            scoreText.loadFromRenderedText(p_renderer, p_scoreFont, text, {255, 255, 255});
+            scoreText.draw(p_renderer,{SCREEN_WIDTH/2 - scoreText.getSize().w/2, y_offset});
+            y_offset += 100;
+        }
+    }
 
 void Painter::drawStartMenu(const std::vector<Button> &_buttonMap) const
 {

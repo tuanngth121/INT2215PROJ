@@ -236,6 +236,7 @@ enum ButtonType
     EXIT_BUTTON,
     TWO_PLAYER_BUTTON,
     THREE_PLAYER_BUTTON,
+    SCORE_MENU_BUTTON,
     TOTAL_BUTTONS
 };
 
@@ -247,6 +248,7 @@ enum Status
     END_STATUS,
     GUIDE_STATUS,
     EXIT_STATUS,
+    SCORE_STATUS,
     NONE_STATUS
 };
 class GameObject
@@ -397,7 +399,6 @@ public:
         miniMenuTitleTexture = Texture();
         fatesText = Texture();
         startMenuTitleTexture = Texture();
-
         fateTexture = std::vector<Texture>(Player::TOTAL_PLAYERS, Texture());
         playgroundTexture = std::vector<Texture>(ObjectType::TOTAL_TYPES + Player::TOTAL_PLAYERS - 1, Texture());
 
@@ -420,18 +421,22 @@ public:
     void drawMiniMenu(const Player &_winner, const std::vector<Button> &_buttonMap) const;
     void drawMainMenu(const std::vector<Button> &_buttonMap) const;
     void drawGuideMenu(const std::vector<Button> &_buttonMap) const;
+    void drawScoreMenu(const std::vector<Button> &_buttonMap) const;
+    void drawScoreboard(const std::string &filename) const;
     void drawStartMenu(const std::vector<Button> &_buttonMap) const;
 
 protected:
     SDL_Renderer *p_renderer;
     TTF_Font *p_titleTextFont;
     TTF_Font *p_winnerTextFont;
+    TTF_Font *p_scoreFont;
 
     Texture backgroundTexture;
     Texture menuTitleTexture;
     Texture miniMenuTitleTexture;
     Texture fatesText;
     Texture startMenuTitleTexture;
+    Texture scoreTexture;
 
     std::vector<Texture> playgroundTexture;
     std::vector<Texture> fateTexture;
@@ -492,6 +497,9 @@ public:
 
     void initGuideMenuButton();
     void handleGuideMenuEvent(Status &_status);
+
+    void initScoreButton();
+    void handleScoreEvent(Status &_status);
 
     void initStartMenuButton();
     void handleStartMenuEvent(Status &_status);
@@ -656,7 +664,6 @@ private:
 
     Time livingTime;
 };
-
 class GameEngine
 {
 public:
